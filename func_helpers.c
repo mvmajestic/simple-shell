@@ -140,7 +140,7 @@ void variable_replacement(char **line, int *exe_ret)
 			if (!line)
 				return;
 			new_line[0] = '\0';
-			_strncat(new_line, old_line, j);
+			_strncat(new_line, old_line, a);
 			if (replacement)
 			{
 				_strcat(new_line, replacement);
