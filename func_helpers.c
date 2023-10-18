@@ -126,7 +126,7 @@ void variable_replacement(char **line, int *exe_ret)
 				replacement = _itoa(*exe_ret);
 				b = a + 2;
 			}
-			else if (old_line[j + 1])
+			else if (old_line[a + 1])
 			{
 				for (b = a + 1; old_line[b] &&
 						old_line[b] != '$' &&
