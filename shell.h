@@ -78,6 +78,8 @@ int handle_args(int *exe_ret);
 int check_args(char **args);
 void free_args(char **args, char **front);
 char **replace_aliases(char **args);
+ssize_t get_new_len(char *line);
+void logical_ops(char *line, ssize_t *new_len);
 
 int _strlen(const char *s);
 char *_strcat(char *dest, const char *src);
