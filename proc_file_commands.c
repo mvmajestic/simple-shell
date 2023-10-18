@@ -71,7 +71,7 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		if (_strncmp(args[a], ";", 1) == 0)
 		{
 			free(args[a]);
-			args[i] = NULL;
+			args[a] = NULL;
 			ret = call_args(args, front, exe_ret);
 			args = &args[++a];
 			a = 0;
