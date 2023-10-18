@@ -54,7 +54,7 @@ int call_args(char **args, char **front, int *exe_ret)
 
 	if (!args[0])
 		return (*exe_ret);
-	for (index = 0; args[idx]; idx++)
+	for (idx = 0; args[idx]; idx++)
 	{
 		if (_strncmp(args[idx], "||", 2) == 0)
 		{
@@ -69,7 +69,7 @@ int call_args(char **args, char **front, int *exe_ret)
 			}
 			else
 			{
-				for (idx++; args[idx]; index++)
+				for (idx++; args[idx]; idx++)
 					free(args[idx]);
 				return (ret);
 			}
@@ -200,7 +200,7 @@ int check_args(char **args)
 
 	for (j = 0; args[j]; j++)
 	{
-		cur = args[j];
+		curr = args[j];
 		if (curr[0] == ';' || curr[0] == '&' || curr[0] == '|')
 		{
 			if (j == 0 || curr[1] == ';')
