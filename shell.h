@@ -89,13 +89,13 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
 int (*get_builtin(char *command))(char **args, char **front);
-int shellby_exit(char **args, char **front);
-int shellby_env(char **args, char __attribute__((__unused__)) **front);
-int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_alias(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
+int my_exit(char **args, char **front);
+int my_env(char **args, char __attribute__((__unused__)) **front);
+int my_setenv(char **args, char __attribute__((__unused__)) **front);
+int my_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int my_cd(char **args, char __attribute__((__unused__)) **front);
+int my_alias(char **args, char __attribute__((__unused__)) **front);
+int my_help(char **args, char __attribute__((__unused__)) **front);
 
 char **_copyenv(void);
 void free_env(void);
