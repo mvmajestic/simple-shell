@@ -28,7 +28,7 @@ int my_alias(char **args, char __attribute__((__unused__)) **front)
 	for (a = 0; args[a]; a++)
 	{
 		tmp = aliases;
-		value = _strchr(args[i], '=');
+		value = _strchr(args[a], '=');
 		if (!value)
 		{
 			while (tmp)
@@ -77,7 +77,7 @@ void set_alias(char *var_name, char *value)
 	new_value[b] = '\0';
 	while (tmp)
 	{
-		if (_strcmp(var_name, temp->name) == 0)
+		if (_strcmp(var_name, tmp->name) == 0)
 		{
 			free(tmp->value);
 			tmp->value = new_value;

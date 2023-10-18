@@ -110,12 +110,12 @@ int my_cd(char **args, char __attribute__((__unused__)) **front)
 
 	dir_info[0] = "OLDPWD";
 	dir_info[1] = oldpwd;
-	if (shellby_setenv(dir_info, dir_info) == -5)
+	if (my_setenv(dir_info, dir_info) == -5)
 		return (-5);
 
 	dir_info[0] = "PWD";
 	dir_info[1] = pwd;
-	if (shellby_setenv(dir_info, dir_info) == -5)
+	if (my_setenv(dir_info, dir_info) == -5)
 		return (-5);
 	if (args[0] && args[0][0] == '-' && args[0][1] != '-')
 	{

@@ -72,7 +72,7 @@ int my_setenv(char **args, char __attribute__((__unused__)) **front)
 		return (create_error(args, -1));
 	}
 
-	for (index = 0; environ[idx]; idx++)
+	for (idx = 0; environ[idx]; idx++)
 		new_environ[idx] = environ[idx];
 
 	free(environ);

@@ -101,6 +101,9 @@ char **_copyenv(void);
 void free_env(void);
 char **_getenv(const char *var);
 
+void set_alias(char *var_name, char *value);
+void print_alias(alias_t *alias);
+
 int create_error(char **args, int err);
 char *error_env(char **args);
 char *error_1(char **args);
