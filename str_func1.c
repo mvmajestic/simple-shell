@@ -1,96 +1,106 @@
 #include "shell.h"
 
-
 /**
- * _strcpy - will copy a string
- * @dest: destination string
- * @src: source string
+ * _strcmp - will compare two strings.
+ * @s1: first string to be compared.
+ * @s2: second string to be compared.
  *
- * Return: pointer to the destinatiotn
+ * Return: Positive byte difference if s1 > s2
+ * 0 if s1 = s2, and negative byte difference if s1 < s2
  */
 
-char *_strcpy(char *dest, char *src)
+int _strcmp(char *s1, char *s2)
 
 {
-	int a = 0;
-
-	if (dest == src || src == 0)
-		return (dest);
-	while (src[a])
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-		dest[a] = src[a];
-		a++;
+		s1++;
+		s2++;
 	}
-	dest[a] = 0;
-	return (dest);
+
+	if (*s1 != *s2)
+		return (*s1 - *s2);
+
+	return (0);
 }
 
 /**
- * _strdup - will duplicate a string
- * @str: string to duplicate
+ * _strncmp - will compare two strings.
+ * @s1: pointer to a string.
+ * @s2: pointer to a string.
+ * @n: first n bytes of strings to compare.
  *
- * Return: pointer to duplicated string
+ * Return: Negative if s1 is shorter than s2,
+ * 0 if s1 and s2 match, and positive if s1 is longer thn s2.
  */
 
-char *_strdup(const char *str)
+int _strncmp(const char *s1, const char *s2, size_t n)
 
 {
-	int length = 0;
-	char *ret;
+	size_t a;
 
-	if (str == NULL)
-		return (NULL);
-	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
-	if (!ret)
-		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
-	return (ret);
+	for (a = 0; s1[a] && s2[a] && a < n; a++)
+	{
+		if (s1[a] > s2[a])
+			return (s1[a] - s2[a]);
+		else if (s1[a] < s2[a])
+			return (s1[a] - s2[a]);
+	}
+	if (a == n)
+		return (0);
+	else
+		return (-15);
 }
 
 /**
- *_puts - will print an input string
- *@str: string to print
+ * _strchr - will locate a character in a string.
+ * @s: string to be searched.
+ * @c: character to be located.
  *
- * Return: Nothing
+ * Return: If c is found - a pointer to first occurence.
+ * If c is not found - NULL.
  */
 
-void _puts(char *str)
+char *_strchr(char *s, char c)
 
 {
-	int a = 0;
+	int idx;
 
-	if (!str)
-		return;
-	while (str[a] != '\0')
+	for (idx = 0; s[idx]; idx++)
 	{
-		_putchar(str[a]);
-		a++;
+		if (s[idx] == c)
+			return (s + idx);
 	}
+
+	return (NULL);
 }
 
 /**
- * _putchar - will write character c to stdout
- * @c: character to print
+ * _strspn - will get length of prefix substring.
+ * @s: string to be searched.
+ * @accept: prefix to be measured.
  *
- * Return: On success 1, or -1 on error
- * and errno is set appropriately.
+ * Return: number of bytes in s which
+ * consist only of bytes from accept.
  */
 
-int _putchar(char c)
+int _strspn(char *s, char *accept)
 
 {
-	static int a;
-	static char buf[WRITE_BUF_SIZE];
+	int bytes = 0;
+	int idx;
 
-	if (c == BUF_FLUSH || a >= WRITE_BUF_SIZE)
+	while (*s)
 	{
-		write(1, buf, a);
-		a = 0;
+		for (idx = 0; accept[idx]; idx++)
+		{
+			if (*s == accept[idx])
+			{
+				bytes++;
+				break;
+			}
+		}
+		s++;
 	}
-	if (c != BUF_FLUSH)
-		buf[a++] = c;
-	return (1);
+	return (bytes);
 }
